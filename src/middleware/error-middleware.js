@@ -5,5 +5,11 @@ const errorMiddleware = async (err, req, res, newxt) => {
         res.status(err.status).json({
             errors: err.message
         }).end();
-    } else if(err instanceof ValidationError)
+    } else if(err instanceof ValidationError){
+
+    } else {
+        res.status(500).json({
+            errors: err.message
+        })
+    }
 }
